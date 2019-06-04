@@ -2,11 +2,13 @@ import readlineSync from 'readline-sync';
 import { cons, car, cdr, toString } from 'hexlet-pairs';
 import * as evenFuncs from './games/even';
 import * as calcFuncs from './games/calc';
+import * as gcdFuncs from './games/gcd';
 
 const selectTopic = (gameName) => {
   switch (gameName) {
     case 'even': return evenFuncs.topic();
     case 'calc': return calcFuncs.topic();
+    case 'gcd': return gcdFuncs.topic();
     default: break;
   }
 };
@@ -15,6 +17,7 @@ const selectQuestAnswer = (gameName) => {
   switch (gameName) {
     case 'even': return evenFuncs.questAnswer();
     case 'calc': return calcFuncs.questAnswer();
+    case 'gcd': return gcdFuncs.questAnswer();
     default: break;
   }
 };
