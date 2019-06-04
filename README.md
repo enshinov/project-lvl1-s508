@@ -5,3 +5,5 @@
 [![Build Status](https://travis-ci.com/enshinov/project-lvl1-s508.svg?branch=master)](https://travis-ci.com/enshinov/project-lvl1-s508)
 
 <a href="https://asciinema.org/a/4EK0r6Wq7t48b5nPaXPUhy1Ia" target="_blank"><img src="https://asciinema.org/a/4EK0r6Wq7t48b5nPaXPUhy1Ia.svg" /></a>
+
+<a href="https://asciinema.org/a/P13hrDfKYjsMZtwbjWbTuGk1v" target="_blank"><img src="https://asciinema.org/a/P13hrDfKYjsMZtwbjWbTuGk1v.svg" /></a>
