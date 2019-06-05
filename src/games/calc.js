@@ -3,7 +3,7 @@ import { cons, car, cdr, toString } from 'hexlet-pairs';
 
 export const topic = () => 'What is the result of the expression?';
 
-const switchAnswer = (number1, number2, operator) => {
+const correctAnswer = (number1, number2, operator) => {
   switch (operator) {
     case '+': return number1 + number2;
     case '-': return number1 - number2;
@@ -19,6 +19,6 @@ export const questAnswer = () => {
   const number1 = getRandomInt(0, 100);
   const number2 = getRandomInt(0, 100);
   const question = `${number1} ${operator} ${number2}`;
-  const answer = `${switchAnswer(number1, number2, operator)}`;
+  const answer = `${correctAnswer(number1, number2, operator)}`;
   return cons(question, answer);
 };

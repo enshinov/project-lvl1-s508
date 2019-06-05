@@ -3,12 +3,14 @@ import { cons, car, cdr, toString } from 'hexlet-pairs';
 import * as evenFuncs from './games/even';
 import * as calcFuncs from './games/calc';
 import * as gcdFuncs from './games/gcd';
+import * as progressionFuncs from './games/progression';
 
 const selectTopic = (gameName) => {
   switch (gameName) {
     case 'even': return evenFuncs.topic();
     case 'calc': return calcFuncs.topic();
     case 'gcd': return gcdFuncs.topic();
+    case 'progression': return progressionFuncs.topic();
     default: break;
   }
 };
@@ -18,6 +20,7 @@ const selectQuestAnswer = (gameName) => {
     case 'even': return evenFuncs.questAnswer();
     case 'calc': return calcFuncs.questAnswer();
     case 'gcd': return gcdFuncs.questAnswer();
+    case 'progression': return progressionFuncs.questAnswer();
     default: break;
   }
 };
