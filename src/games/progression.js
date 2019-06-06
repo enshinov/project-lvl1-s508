@@ -5,9 +5,15 @@ import getRandomInt from '../getrandomint';
 export const topic = () => 'What number is missing in the progression?';
 
 export const questAnswer = () => {
-  let nextNumber = getRandomInt(0, 100);
-  const progressionStep = getRandomInt(-10, 10);
-  const misingPosition = getRandomInt(1, 10);
+  const minNumber = 0;
+  const maxNumber = 100;
+  const minStep = -10;
+  const maxStep = 10;
+  const minMisPosition = 1;
+  const maxMisPosition = 10;
+  let nextNumber = getRandomInt(minNumber, maxNumber);
+  const progressionStep = getRandomInt(minStep, maxStep);
+  const misingPosition = getRandomInt(minMisPosition, maxMisPosition);
   let progressionString = '';
   let missingNumber;
   let i = 1;

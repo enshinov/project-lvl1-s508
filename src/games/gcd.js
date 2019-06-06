@@ -16,8 +16,10 @@ const correctAnswer = (a, b) => {
 };
 
 export const questAnswer = () => {
-  const number1 = getRandomInt(0, 100);
-  const number2 = getRandomInt(0, 100);
+  const minNumber = 0;
+  const maxNumber = 100;
+  const number1 = getRandomInt(minNumber, maxNumber);
+  const number2 = getRandomInt(minNumber, maxNumber);
   const question = `${number1} ${number2}`;
   const answer = `${correctAnswer(number1, number2)}`;
   return cons(question, answer);
