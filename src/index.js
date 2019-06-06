@@ -4,6 +4,7 @@ import * as evenFuncs from './games/even';
 import * as calcFuncs from './games/calc';
 import * as gcdFuncs from './games/gcd';
 import * as progressionFuncs from './games/progression';
+import * as primeFuncs from './games/prime';
 
 const selectTopic = (gameName) => {
   switch (gameName) {
@@ -11,6 +12,7 @@ const selectTopic = (gameName) => {
     case 'calc': return calcFuncs.topic();
     case 'gcd': return gcdFuncs.topic();
     case 'progression': return progressionFuncs.topic();
+    case 'prime': return primeFuncs.topic();
     default: break;
   }
 };
@@ -21,6 +23,7 @@ const selectQuestAnswer = (gameName) => {
     case 'calc': return calcFuncs.questAnswer();
     case 'gcd': return gcdFuncs.questAnswer();
     case 'progression': return progressionFuncs.questAnswer();
+    case 'prime': return primeFuncs.questAnswer();
     default: break;
   }
 };
