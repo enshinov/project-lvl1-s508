@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { car, cdr } from 'hexlet-pairs';
 import * as evenFuncs from './games/even';
 import * as calcFuncs from './games/calc';
 import * as gcdFuncs from './games/gcd';
@@ -28,8 +28,6 @@ const selectQuestAnswer = (gameName) => {
   }
 };
 
-export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
 export const gameEngine = (gameName) => {
   console.log('Welcome to the Brain Games!');
   console.log(selectTopic(gameName));
@@ -55,3 +53,5 @@ export const gameEngine = (gameName) => {
   }
   console.log(`Congratulations, ${userName}!`);
 };
+
+export default gameEngine;

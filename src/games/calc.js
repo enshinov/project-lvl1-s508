@@ -1,5 +1,5 @@
-import { getRandomInt } from '..';
-import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { cons } from 'hexlet-pairs';
+import getRandomInt from '../getrandomint';
 
 export const topic = () => 'What is the result of the expression?';
 
@@ -14,10 +14,12 @@ const correctAnswer = (number1, number2, operator) => {
 
 export const questAnswer = () => {
   const operators = '+-*';
-  const length = operators.length;
+  const length = operators.length();
   const operator = operators[getRandomInt(0, length - 1)];
-  const number1 = getRandomInt(0, 100);
-  const number2 = getRandomInt(0, 100);
+  const minNumber = 0;
+  const maxNumber = 100;
+  const number1 = getRandomInt(minNumber, maxNumber);
+  const number2 = getRandomInt(minNumber, maxNumber);
   const question = `${number1} ${operator} ${number2}`;
   const answer = `${correctAnswer(number1, number2, operator)}`;
   return cons(question, answer);

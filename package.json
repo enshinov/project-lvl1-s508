@@ -9,7 +9,15 @@
     "brain-progression": "dist/bin/brain-progression.js",
     "brain-prime": "dist/bin/brain-prime.js"
   },
-  "description": "",
+  "description": "Brain Games",
+  "keywords": [
+    "even",
+    "calculator",
+    "calc",
+    "gcd",
+    "progression",
+    "prime"
+  ],
   "main": "index.js",
   "files": [
     "dist"

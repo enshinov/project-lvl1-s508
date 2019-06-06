@@ -1,5 +1,6 @@
-import { getRandomInt } from '..';
-import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { cons } from 'hexlet-pairs';
+import getRandomInt from '../getrandomint';
+
 
 export const topic = () => 'Find the greatest common divisor of given numbers.';
 

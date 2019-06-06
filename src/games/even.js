@@ -1,5 +1,5 @@
-import { getRandomInt } from '..';
-import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { cons } from 'hexlet-pairs';
+import getRandomInt from '../getrandomint';
 
 export const topic = () => 'Answer "yes" if number even otherwise answer "no".';
 
