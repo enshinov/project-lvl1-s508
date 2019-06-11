@@ -1,6 +1,6 @@
 {
   "name": "enshinov_brain_games",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
     "brain-calc": "dist/bin/brain-calc.js",
