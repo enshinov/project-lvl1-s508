@@ -1,26 +1,37 @@
 import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
+import { startGameEngine, getCountOfRounds } from '..';
 
+const gameTask = 'Find the greatest common divisor of given numbers.';
 
-export const topic = () => 'Find the greatest common divisor of given numbers.';
-
-const correctAnswer = (a, b) => {
-  while (a !== 0 && b !== 0) {
-    if (a > b) {
-      a %= b;
+const findGreatestDivisor = (number1, number2) => {
+  while (number1 !== 0 && number2 !== 0) {
+    if (number1 > number2) {
+      number1 %= number2;
     } else {
-      b %= a;
+      number2 %= number1;
     }
   }
-  return a + b;
+  return number1 + number2;
 };
 
-export const questAnswer = () => {
-  const minNumber = 0;
-  const maxNumber = 100;
+const minNumber = 0;
+const maxNumber = 100;
+
+export const getQuestionAnswer = () => {
   const number1 = getRandomInt(minNumber, maxNumber);
   const number2 = getRandomInt(minNumber, maxNumber);
   const question = `${number1} ${number2}`;
-  const answer = `${correctAnswer(number1, number2)}`;
+  const greatestDivisor = findGreatestDivisor(number1, number2);
+  const answer = greatestDivisor.toString();
   return cons(question, answer);
 };
+
+const createGameData = (GameData, countOfSteps) => {
+  if (countOfSteps < 1) return GameData;
+  return createGameData(cons(getQuestionAnswer(), GameData), countOfSteps - 1);
+};
+
+const fullGameData = createGameData(getQuestionAnswer(), getCountOfRounds());
+
+export default () => startGameEngine(gameTask, fullGameData);

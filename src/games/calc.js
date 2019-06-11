@@ -1,9 +1,10 @@
-import { cons } from 'hexlet-pairs';
+import { cons, toString as pairToString } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
+import { startGameEngine, getCountOfRounds } from '..';
 
-export const topic = () => 'What is the result of the expression?';
+const gameTask = 'What is the result of the expression?';
 
-const correctAnswer = (number1, number2, operator) => {
+const getCalculation = (number1, number2, operator) => {
   switch (operator) {
     case '+': return number1 + number2;
     case '-': return number1 - number2;
@@ -12,15 +13,27 @@ const correctAnswer = (number1, number2, operator) => {
   }
 };
 
-export const questAnswer = () => {
-  const operators = '+-*';
-  const length = operators.length();
-  const operator = operators[getRandomInt(0, length - 1)];
-  const minNumber = 0;
-  const maxNumber = 100;
+const operators = '+-*';
+const countOfOperators = operators.length;
+
+const minNumber = 0;
+const maxNumber = 100;
+
+export const getQuestionAnswer = () => {
+  const operator = operators[getRandomInt(0, countOfOperators - 1)];
   const number1 = getRandomInt(minNumber, maxNumber);
   const number2 = getRandomInt(minNumber, maxNumber);
   const question = `${number1} ${operator} ${number2}`;
-  const answer = `${correctAnswer(number1, number2, operator)}`;
+  const calculation = getCalculation(number1, number2, operator);
+  const answer = calculation.toString();
   return cons(question, answer);
 };
+
+const createGameData = (GameData, countOfSteps) => {
+  if (countOfSteps < 1) return GameData;
+  return createGameData(cons(getQuestionAnswer(), GameData), countOfSteps - 1);
+};
+
+const fullGameData = createGameData(getQuestionAnswer(), getCountOfRounds());
+
+export default () => startGameEngine(gameTask, fullGameData);

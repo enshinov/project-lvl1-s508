@@ -1,57 +1,30 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from 'hexlet-pairs';
-import * as evenFuncs from './games/even';
-import * as calcFuncs from './games/calc';
-import * as gcdFuncs from './games/gcd';
-import * as progressionFuncs from './games/progression';
-import * as primeFuncs from './games/prime';
 
-const selectTopic = (gameName) => {
-  switch (gameName) {
-    case 'even': return evenFuncs.topic();
-    case 'calc': return calcFuncs.topic();
-    case 'gcd': return gcdFuncs.topic();
-    case 'progression': return progressionFuncs.topic();
-    case 'prime': return primeFuncs.topic();
-    default: break;
-  }
-};
+const countOfRounds = 3;
+export const getCountOfRounds = () => countOfRounds;
 
-const selectQuestAnswer = (gameName) => {
-  switch (gameName) {
-    case 'even': return evenFuncs.questAnswer();
-    case 'calc': return calcFuncs.questAnswer();
-    case 'gcd': return gcdFuncs.questAnswer();
-    case 'progression': return progressionFuncs.questAnswer();
-    case 'prime': return primeFuncs.questAnswer();
-    default: break;
-  }
-};
-
-export const gameEngine = (gameName) => {
+export const startGameEngine = (gameTask, gameData) => {
   console.log('Welcome to the Brain Games!');
-  console.log(selectTopic(gameName));
+  console.log(gameTask);
   console.log('');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello ${userName}!`);
   console.log('');
-  let counter = 0;
-  while (counter < 3) {
-    const questAnswer = selectQuestAnswer(gameName);
-    const question = car(questAnswer);
-    const correctAnswer = cdr(questAnswer);
+  for (let i = 1; i <= countOfRounds; i += 1) {
+    const pairQuestionAnswer = car(gameData);
+    const question = car(pairQuestionAnswer);
+    const correctAnswer = cdr(pairQuestionAnswer);
     console.log(`Question: ${question}`);
-    const answer = readlineSync.question('Your answer: ');
-    if (answer === correctAnswer) {
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer === correctAnswer) {
       console.log('Correct!');
-      counter += 1;
+      gameData = cdr(gameData);
     } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
   }
   console.log(`Congratulations, ${userName}!`);
 };
-
-export default gameEngine;
