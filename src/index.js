@@ -11,15 +11,16 @@ export const startGameEngine = (gameTask, gameData) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello ${userName}!`);
   console.log('');
+  let listOfQuestions = gameData;
   for (let i = 1; i <= countOfRounds; i += 1) {
-    const pairQuestionAnswer = car(gameData);
+    const pairQuestionAnswer = car(listOfQuestions);
     const question = car(pairQuestionAnswer);
     const correctAnswer = cdr(pairQuestionAnswer);
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
-      gameData = cdr(gameData);
+      listOfQuestions = cdr(listOfQuestions);
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);

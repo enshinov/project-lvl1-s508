@@ -5,11 +5,13 @@ import { startGameEngine, getCountOfRounds } from '..';
 const gameTask = 'Find the greatest common divisor of given numbers.';
 
 const findGreatestDivisor = (number1, number2) => {
-  while (number1 !== 0 && number2 !== 0) {
-    if (number1 > number2) {
-      number1 %= number2;
+  let a = number1;
+  let b = number2;
+  while (a !== 0 && b !== 0) {
+    if (a > b) {
+      a %= b;
     } else {
-      number2 %= number1;
+      b %= a;
     }
   }
   return number1 + number2;

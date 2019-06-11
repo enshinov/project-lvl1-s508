@@ -1,16 +1,21 @@
-import { cons, toString as pairToString } from 'hexlet-pairs';
+import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
 import { startGameEngine, getCountOfRounds } from '..';
 
 const gameTask = 'What is the result of the expression?';
 
 const getCalculation = (number1, number2, operator) => {
+  let result;
   switch (operator) {
-    case '+': return number1 + number2;
-    case '-': return number1 - number2;
-    case '*': return number1 * number2;
-    default: break;
+    case '+': result = number1 + number2;
+      break;
+    case '-': result = number1 - number2;
+      break;
+    case '*': result = number1 * number2;
+      break;
+    default: result = NaN;
   }
+  return result;
 };
 
 const operators = '+-*';
