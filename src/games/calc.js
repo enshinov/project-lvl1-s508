@@ -19,12 +19,12 @@ const getCalculation = (number1, number2, operator) => {
 };
 
 const operators = '+-*';
-const countOfOperators = operators.length;
 
 const minNumber = 0;
 const maxNumber = 100;
 
 export const getQuestionAnswer = () => {
+  const countOfOperators = operators.length;
   const operator = operators[getRandomInt(0, countOfOperators - 1)];
   const number1 = getRandomInt(minNumber, maxNumber);
   const number2 = getRandomInt(minNumber, maxNumber);

@@ -14,7 +14,7 @@ const findGreatestDivisor = (number1, number2) => {
       b %= a;
     }
   }
-  return number1 + number2;
+  return a + b;
 };
 
 const minNumber = 0;
