@@ -1,28 +1,22 @@
 import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
-import { startGameEngine, getCountOfRounds } from '..';
+import { playGame, getRoundsCount } from '..';
 
 const gameTask = 'Answer "yes" if number even otherwise answer "no".';
 
-const isEven = (number) => {
-  const result = (number % 2 === 0) ? 'yes' : 'no';
-  return result;
-};
+const isEven = number => number % 2 === 0;
 
 const minNumber = 0;
 const maxNumber = 100;
 
-const getQuestionAnswer = () => {
-  const question = getRandomInt(minNumber, maxNumber);
-  const answer = isEven(question);
-  return cons(question, answer);
+const createGameData = () => {
+  let result;
+  for (let i = 1; i <= getRoundsCount(); i += 1) {
+    const question = getRandomInt(minNumber, maxNumber);
+    const answer = (isEven(question)) ? 'yes' : 'no';
+    result = cons(cons(question, answer), result);
+  }
+  return result;
 };
 
-const createGameData = (GameData, countOfSteps) => {
-  if (countOfSteps < 1) return GameData;
-  return createGameData(cons(getQuestionAnswer(), GameData), countOfSteps - 1);
-};
-
-const fullGameData = createGameData(getQuestionAnswer(), getCountOfRounds());
-
-export default () => startGameEngine(gameTask, fullGameData);
+export default () => playGame(gameTask, createGameData());
