@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
-import { playGame, getRoundsCount } from '..';
+import playGame from '..';
 
 const gameTask = 'What is the result of the expression?';
 
@@ -13,7 +13,7 @@ const calculate = (number1, number2, operator) => {
       break;
     case '*': result = number1 * number2;
       break;
-    default: result = NaN;
+    default:
   }
   return result;
 };
@@ -24,17 +24,16 @@ const minNumber = 0;
 const maxNumber = 100;
 
 export const createGameData = () => {
-  let result;
-  for (let i = 1; i <= getRoundsCount(); i += 1) {
+  const getAnswerQuestion = () => {
     const operator = operators[getRandomInt(0, operators.length - 1)];
     const number1 = getRandomInt(minNumber, maxNumber);
     const number2 = getRandomInt(minNumber, maxNumber);
     const question = `${number1} ${operator} ${number2}`;
     const calculation = calculate(number1, number2, operator);
     const answer = calculation.toString();
-    result = cons(cons(question, answer), result);
-  }
-  return result;
+    return cons(question, answer);
+  };
+  return getAnswerQuestion;
 };
 
 export default () => playGame(gameTask, createGameData());

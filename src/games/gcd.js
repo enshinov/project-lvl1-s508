@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
-import { playGame, getRoundsCount } from '..';
+import playGame from '..';
 
 const gameTask = 'Find the greatest common divisor of given numbers.';
 
@@ -21,16 +21,15 @@ const minNumber = 0;
 const maxNumber = 100;
 
 export const createGameData = () => {
-  let result;
-  for (let i = 1; i <= getRoundsCount(); i += 1) {
+  const getAnswerQuestion = () => {
     const number1 = getRandomInt(minNumber, maxNumber);
     const number2 = getRandomInt(minNumber, maxNumber);
     const question = `${number1} ${number2}`;
     const greatestDivisor = findGreatestDivisor(number1, number2);
     const answer = greatestDivisor.toString();
-    result = cons(cons(question, answer), result);
-  }
-  return result;
+    return cons(question, answer);
+  };
+  return getAnswerQuestion;
 };
 
 export default () => playGame(gameTask, createGameData());
