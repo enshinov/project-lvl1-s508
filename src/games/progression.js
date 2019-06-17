@@ -2,37 +2,35 @@ import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
 import playGame from '..';
 
-const gameTask = 'What number is missing in the progression?';
-
 const minNumber = 0;
 const maxNumber = 100;
 
 const progressionLength = 10;
 const minStep = -10;
 const maxStep = 10;
-const minMisPosition = 1;
+const minMissingPosition = 1;
 
-export const createGameData = () => {
-  const getAnswerQuestion = () => {
+const createGameData = () => {
+  const gameTask = 'What number is missing in the progression?';
+  const getQuestionAnswer = () => {
     const startNumber = getRandomInt(minNumber, maxNumber);
     const progressionStep = getRandomInt(minStep, maxStep);
-    const misingPosition = getRandomInt(minMisPosition, progressionLength);
-    let progressionString = '';
-    let missingNumber;
+    const misingPosition = getRandomInt(minMissingPosition, progressionLength);
+    let progression = '';
+    const missingNumber = startNumber + progressionStep * misingPosition;
     for (let i = 0; i <= progressionLength; i += 1) {
       const nextNumber = startNumber + progressionStep * i;
-      if (i === misingPosition) {
-        missingNumber = nextNumber;
-        progressionString = `${progressionString} ..`;
+      if (nextNumber === missingNumber) {
+        progression = `${progression} ..`;
       } else {
-        progressionString = `${progressionString} ${nextNumber}`;
+        progression = `${progression} ${nextNumber}`;
       }
     }
-    const question = progressionString;
+    const question = progression;
     const answer = missingNumber.toString();
     return cons(question, answer);
   };
-  return getAnswerQuestion;
+  return cons(gameTask, getQuestionAnswer);
 };
 
-export default () => playGame(gameTask, createGameData());
+export default () => playGame(createGameData());

@@ -3,15 +3,16 @@ import { car, cdr } from 'hexlet-pairs';
 
 const roundsCount = 3;
 
-export default (gameTask, gameData) => {
+export default (getGameData) => {
   console.log('Welcome to the Brain Games!');
-  console.log(gameTask);
+  console.log(car(getGameData));
   console.log('');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello ${userName}!`);
   console.log('');
   for (let i = 1; i <= roundsCount; i += 1) {
-    const pairQuestionAnswer = gameData();
+    const getQuestionAnswer = cdr(getGameData);
+    const pairQuestionAnswer = getQuestionAnswer();
     const question = car(pairQuestionAnswer);
     const correctAnswer = cdr(pairQuestionAnswer);
     console.log(`Question: ${question}`);
