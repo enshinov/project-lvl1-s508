@@ -2,19 +2,17 @@ import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
 import playGame from '..';
 
+const gameTask = 'Answer "yes" if number even otherwise answer "no".';
+
 const isEven = number => number % 2 === 0;
 
-const minNumber = 0;
-const maxNumber = 100;
+const minRandomInt = 0;
+const maxRandomInt = 100;
 
-const createGameData = () => {
-  const gameTask = 'Answer "yes" if number even otherwise answer "no".';
-  const getQuestionAnswer = () => {
-    const question = getRandomInt(minNumber, maxNumber);
-    const answer = isEven(question) ? 'yes' : 'no';
-    return cons(question, answer);
-  };
-  return cons(gameTask, getQuestionAnswer);
+const getQuestionAnswer = () => {
+  const question = getRandomInt(minRandomInt, maxRandomInt);
+  const answer = isEven(question) ? 'yes' : 'no';
+  return cons(question, answer);
 };
 
-export default () => playGame(createGameData());
+export default () => playGame(gameTask, getQuestionAnswer);

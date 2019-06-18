@@ -2,6 +2,8 @@ import { cons } from 'hexlet-pairs';
 import getRandomInt from '../getrandomint';
 import playGame from '..';
 
+const gameTask = 'Find the greatest common divisor of given numbers.';
+
 const findGreatestDivisor = (number1, number2) => {
   let a = number1;
   let b = number2;
@@ -15,20 +17,15 @@ const findGreatestDivisor = (number1, number2) => {
   return a + b;
 };
 
-const minNumber = 0;
-const maxNumber = 100;
+const minRandomInt = 0;
+const maxRandomInt = 100;
 
-const createGameData = () => {
-  const gameTask = 'Find the greatest common divisor of given numbers.';
-  const getQuestionAnswer = () => {
-    const number1 = getRandomInt(minNumber, maxNumber);
-    const number2 = getRandomInt(minNumber, maxNumber);
-    const question = `${number1} ${number2}`;
-    const greatestDivisor = findGreatestDivisor(number1, number2);
-    const answer = greatestDivisor.toString();
-    return cons(question, answer);
-  };
-  return cons(gameTask, getQuestionAnswer);
+const getQuestionAnswer = () => {
+  const number1 = getRandomInt(minRandomInt, maxRandomInt);
+  const number2 = getRandomInt(minRandomInt, maxRandomInt);
+  const question = `${number1} ${number2}`;
+  const answer = findGreatestDivisor(number1, number2).toString();
+  return cons(question, answer);
 };
 
-export default () => playGame(createGameData());
+export default () => playGame(gameTask, getQuestionAnswer);
