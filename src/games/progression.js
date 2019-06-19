@@ -12,21 +12,23 @@ const minStep = -10;
 const maxStep = 10;
 
 const getQuestionAnswer = () => {
-  const startProgression = getRandomInt(minRandomInt, maxRandomInt);
-  const progressionStep = getRandomInt(minStep, maxStep);
-  const misingPosition = getRandomInt(1, progressionLength);
+  const init = getRandomInt(minRandomInt, maxRandomInt);
+  const step = getRandomInt(minStep, maxStep);
+  const missingPosition = getRandomInt(1, progressionLength);
   let progression = '';
-  const missingNumber = startProgression + progressionStep * misingPosition;
-  for (let i = 0; i <= progressionLength; i += 1) {
-    const nextNumber = startProgression + progressionStep * i;
-    if (nextNumber === missingNumber) {
-      progression = `${progression} ..`;
+  for (let i = 1; i <= progressionLength; i += 1) {
+    if (i === missingPosition) {
+      if (i === 1) {
+        progression = '..';
+      } else {
+        progression = `${progression} ..`;
+      }
     } else {
-      progression = `${progression} ${nextNumber}`;
+      progression = `${progression} ${init + step * i}`;
     }
   }
   const question = progression;
-  const answer = missingNumber.toString();
+  const answer = (init + step * missingPosition).toString();
   return cons(question, answer);
 };
 
