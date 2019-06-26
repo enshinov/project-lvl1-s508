@@ -18,16 +18,12 @@ const getQuestionAnswer = () => {
   let progression = '';
   for (let i = 1; i <= progressionLength; i += 1) {
     if (i === missingPosition) {
-      if (i === 1) {
-        progression = '..';
-      } else {
-        progression = `${progression} ..`;
-      }
+      progression = `${progression} ..`;
     } else {
       progression = `${progression} ${init + step * i}`;
     }
   }
-  const question = progression;
+  const question = progression.substr(1);
   const answer = (init + step * missingPosition).toString();
   return cons(question, answer);
 };
