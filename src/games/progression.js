@@ -1,4 +1,5 @@
 import { cons } from 'hexlet-pairs';
+import { l, cons as consList, toString } from '@hexlet/pairs-data';
 import getRandomInt from '../getrandomint';
 import playGame from '..';
 
@@ -15,16 +16,15 @@ const getQuestionAnswer = () => {
   const init = getRandomInt(minRandomInt, maxRandomInt);
   const step = getRandomInt(minStep, maxStep);
   const missingPosition = getRandomInt(1, progressionLength);
-  let progression = '';
+  let progression = l();
   for (let i = 1; i <= progressionLength; i += 1) {
     if (i === missingPosition) {
-      progression += '..';
+      progression = consList('..', progression);
     } else {
-      progression += `${init + step * i}`;
+      progression = consList(init + step * i, progression);
     }
-    if (i < progressionLength) progression += ' ';
   }
-  const question = progression;
+  const question = toString(progression);
   const answer = (init + step * missingPosition).toString();
   return cons(question, answer);
 };
